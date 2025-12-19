@@ -82,3 +82,4 @@ task3_files.yml
         msg: "{{ item.stdout }}"
       loop: "{{ file_content.results }}"
 ```
+Вывод: таким обазом мы познакомились с Ansible в DevOps
