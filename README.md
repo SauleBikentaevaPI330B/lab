@@ -13,7 +13,8 @@
 
 
 Dockerfile:
-```FROM ubuntu:22.04
+```
+FROM ubuntu:22.04
 
 RUN apt-get update && \
     apt-get install -y openssh-server python3 && \
@@ -28,20 +29,24 @@ RUN mkdir -p /home/ansible/.ssh
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]```
+CMD ["/usr/sbin/sshd", "-D"]
+```
 
 
 docker-compose.yml
-```version: '3'
+```
+version: '3'
 services:
   ansible-managed-host:
     build: .
     ports:
       - "2222:22"
-    restart: unless-stopped```
+    restart: unless-stopped
+```
 
 task3_files.yml
-```---
+```
+---
 - name: Work with files
   hosts: managed_hosts
   tasks:
@@ -75,4 +80,5 @@ task3_files.yml
     - name: Show file contents
       debug:
         msg: "{{ item.stdout }}"
-      loop: "{{ file_content.results }}"```
+      loop: "{{ file_content.results }}"
+```
